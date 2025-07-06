@@ -8,7 +8,11 @@ app = Flask(__name__)
 # Fungsi koneksi ke PostgreSQL
 def get_db_connection():
     return psycopg2.connect(
-        os.environ['DATABASE_URL'],
+        host='postgres',
+        dbname='kesehatan_db',
+        user='root',
+        password='password',
+        port=5432,
         cursor_factory=psycopg2.extras.RealDictCursor
     )
 
