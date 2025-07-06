@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layanan Kesehatan Sehati</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Layanan Kesehatan" class="logo">
+            <h1>Layanan Kesehatan Sehati</h1>
+            <nav>
+                <a href="{{ url_for('layanan') }}">Layanan</a>
+                <a href="register">Daftar</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Kami Peduli Kesehatan Anda</h2>
+            <p>Platform layanan kesehatan terpercaya untuk semua kebutuhan medis Anda.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Layanan Kesehatan Sehati. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

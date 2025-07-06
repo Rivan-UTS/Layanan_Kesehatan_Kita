@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Layanan Kesehatan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons (Bootstrap Icons) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .section-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #198754;
+        }
+
+        .layanan-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .layanan-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            font-size: 36px;
+            color: #198754;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .card-text {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .harga {
+            color: #198754;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .icon-box {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <h2 class="section-title">Layanan Kesehatan Tersedia</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+{% for item in layanan %}
+<div class="col">
+    <a href="{{ url_for('detail_layanan', layanan_id=item.id) }}" style="text-decoration: none; color: inherit;">
+        <div class="card layanan-card h-100 p-3">
+            <div class="text-center">
+                <i class="bi bi-heart-pulse-fill icon-box"></i>
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ item.nama }}</h5>
+                <p class="card-text">{{ item.deskripsi }}</p>
+                <p class="harga">Rp {{ "{:,.0f}".format(item.harga) }}</p>
+            </div>
+        </div>
+    </a>
+</div>
+{% endfor %}
+
+    
+</div>
+
+</body>
+</html>
