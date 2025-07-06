@@ -52,7 +52,7 @@ init_db()
 # Halaman utama
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('templates/index.html')
 @app.route('/layanan')
 def layanan():
     conn = get_db_connection()
