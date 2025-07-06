@@ -37,11 +37,6 @@ def init_db():
         cur.close()
         conn.close()
 
-@app.route('/init')
-def init_route():
-    try:
-        init_db()
-
 # Halaman utama
 @app.route('/')
 def home():
@@ -105,6 +100,15 @@ def register():
             return f"Terjadi kesalahan: {e}"
 
     return render_template('register.html')
+
+@app.route('/init')
+def init_route():
+    try:
+        init_db()
+        return "✅ Database berhasil diinisialisasi!"
+    except Exception as e:
+        return f"❌ Gagal inisialisasi DB: {e}"
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
