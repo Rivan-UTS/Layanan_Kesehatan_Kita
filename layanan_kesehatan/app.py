@@ -43,7 +43,9 @@ def init_db():
 
 
 # Jalankan inisialisasi saat aplikasi start
-init_db()
+@app.before_first_request
+def initialize():
+    init_db()
 
 # Halaman utama
 @app.route('/')
