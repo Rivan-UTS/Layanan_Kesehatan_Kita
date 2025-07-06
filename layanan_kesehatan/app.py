@@ -14,7 +14,7 @@ def get_db_connection():
 
 # Buat tabel otomatis jika belum ada
 def init_db():
-   try:
+    try:
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute("""
@@ -36,7 +36,7 @@ def init_db():
         conn.commit()
         cur.close()
         conn.close()
-       print("✔️ Inisialisasi DB berhasil")
+        print("✔️ Inisialisasi DB berhasil")
     except Exception as e:
         print(f"❌ Error saat inisialisasi DB: {e}")
 
