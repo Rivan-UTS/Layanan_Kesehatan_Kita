@@ -8,11 +8,7 @@ app = Flask(__name__)
 # Fungsi koneksi ke PostgreSQL
 def get_db_connection():
     return psycopg2.connect(
-        host='postgres',
-        dbname='kesehatan_db',
-        user='root',
-        password='password',
-        port=5432,
+        os.environ['DATABASE_URL'],
         cursor_factory=psycopg2.extras.RealDictCursor
     )
 
@@ -52,7 +48,7 @@ init_db()
 # Halaman utama
 @app.route('/')
 def home():
-    return render_template('templates/index.html')
+    return render_template('index.html')
 @app.route('/layanan')
 def layanan():
     conn = get_db_connection()
