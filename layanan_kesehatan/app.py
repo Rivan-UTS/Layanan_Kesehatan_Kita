@@ -37,8 +37,10 @@ def init_db():
         cur.close()
         conn.close()
 
-# Jalankan inisialisasi saat aplikasi start
-init_db()
+@app.route('/init')
+def init_route():
+    try:
+        init_db()
 
 # Halaman utama
 @app.route('/')
@@ -107,5 +109,4 @@ def register():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
 
