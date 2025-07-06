@@ -36,6 +36,9 @@ def init_db():
         conn.commit()
         cur.close()
         conn.close()
+       print("✔️ Inisialisasi DB berhasil")
+    except Exception as e:
+        print(f"❌ Error saat inisialisasi DB: {e}")
 
 # Halaman utama
 @app.route('/')
