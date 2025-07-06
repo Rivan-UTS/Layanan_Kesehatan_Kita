@@ -14,33 +14,28 @@ def get_db_connection():
 
 # Buat tabel otomatis jika belum ada
 def init_db():
-    conn = get_db_connection()
-    cur = conn.cursor()
-
-    # Tabel pengguna (kalau belum ada)
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS pengguna (
-            id SERIAL PRIMARY KEY,
-            nama VARCHAR(100),
-            email VARCHAR(100) UNIQUE,
-            password VARCHAR(100)
-        );
-    """)
-
-    # 🆕 Tambahkan ini untuk membuat tabel layanan
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS layanan (
-            id SERIAL PRIMARY KEY,
-            nama VARCHAR(100),
-            deskripsi TEXT,
-            harga INTEGER
-        );
-    """)
-
-    conn.commit()
-    cur.close()
-    conn.close()
-
+   try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS pengguna (
+                id SERIAL PRIMARY KEY,
+                nama VARCHAR(100),
+                email VARCHAR(100) UNIQUE,
+                password VARCHAR(100)
+            );
+        """)
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS layanan (
+                id SERIAL PRIMARY KEY,
+                nama VARCHAR(100),
+                deskripsi TEXT,
+                harga INTEGER
+            );
+        """)
+        conn.commit()
+        cur.close()
+        conn.close()
 
 # Jalankan inisialisasi saat aplikasi start
 init_db()
